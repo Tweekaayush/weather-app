@@ -1,0 +1,102 @@
+.highlight-list{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.highlight-list-item{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: var(--background-color-4);
+    padding: 16px;
+    border-radius: var(--border-radius-2);
+}
+
+.highlight-list-item:nth-child(1){
+    grid-area: 1/1/2/3;
+}
+.highlight-list-item:nth-child(2){
+    grid-area: 1/3/2/5;
+}
+
+.highlight-list-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.highlight-list-header h3{
+    padding: 4px 0;
+}
+
+.highlight-list-header span{
+    padding: 4px 20px;
+    border-radius: var(--border-radius-1);
+    font-weight: 600;
+    color: var(--text-color-4);
+}
+
+.card-list{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+}
+
+.card-item{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-item svg{
+    font-size: var(--heading-text-2);
+}
+
+.highlight-list-item:nth-child(1) .card-item:nth-child(1){
+    justify-content: center;
+}
+
+.highlight-list-item:nth-child(2) .card-item{
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+}
+
+.highlight-list-item:nth-child(3) .card-item:nth-child(1), .highlight-list-item:nth-child(4) .card-item:nth-child(1), .highlight-list-item:nth-child(5) .card-item:nth-child(1), .highlight-list-item:nth-child(6) .card-item:nth-child(1){
+    align-items: flex-start;
+}
+
+.highlight-list-item:nth-child(3) .card-item:nth-child(2), .highlight-list-item:nth-child(4) .card-item:nth-child(2), .highlight-list-item:nth-child(5) .card-item:nth-child(2), .highlight-list-item:nth-child(6) .card-item:nth-child(2){
+    align-items: flex-end;
+}
+
+.aqi-1{
+    background-color: #63ff00;
+}
+.aqi-2{
+    background-color: #d6ff00;
+}
+.aqi-3{
+    background-color: #ffff00;
+}
+.aqi-4{
+    background-color: #ffc100;
+}
+.aqi-5{
+    background-color: #ff0000;
+}
+
+
+@media screen and (max-width:1200px) {
+    .highlight-list{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+    .highlight-list-item:nth-child(1){
+        grid-area: 1/1/2/3;
+    }
+    .highlight-list-item:nth-child(2){
+        grid-area: 2/1/3/3;
+    }
+}

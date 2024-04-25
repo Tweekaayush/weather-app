@@ -1,0 +1,23 @@
+.forecast-list{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.forecast-list-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.weather-details-wrap{
+    flex: 1;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.forecast-list-item > p{
+    flex: 1;
+    text-align: center;
+}

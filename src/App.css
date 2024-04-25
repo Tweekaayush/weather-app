@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Kanit:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+*,
+*::before,
+*::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  /* colors */
+  --primary-color: rgb(0, 255, 255);
+  --background-color-1: rgb(19, 18, 20);
+  --background-color-2:  rgba(255, 255, 255, 0.08);
+  --background-color-3: rgb(29, 28, 31);
+  --background-color-4: rgba(0, 0, 0, 0.1);;
+  --text-color-1: rgb(255, 255, 255);
+  --text-color-2: rgb(221, 218, 229);
+  --text-color-3: rgb(123, 121, 128);
+  --text-color-4: rgb(25, 23, 32);
+  --outline: rgb(62, 61, 64);
+
+  --shadow-1: 0px 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-2: 0px 3px 6px rgba(0, 0, 0, 0.4);
+
+  /* font-size */
+
+  --heading-text-1: 64px;
+  --heading-text-2: 32px;
+  --heading-text-3: 28px;
+  --heading-text-4: 48px;
+
+  --body-text-1: 16px; 
+  --body-text-2: 20px; 
+  --body-text-3: 24px; 
+  --body-text-4: 18px; 
+
+  --border-radius-1: 50px;
+  --border-radius-2: 10px;
+  --border-radius-3: 50%;
+  --border-radius-4: 28px;
+}
+
+.light-theme{
+  /* colors */
+  --primary-color: rgb(0, 255, 255);
+  --background-color-1: rgb(0, 207, 207);
+  --background-color-2:  rgb(0, 255, 255, 0.08);
+  --background-color-3: rgba(45, 255, 255, 0.5);
+  --background-color-4: rgba(5, 207, 207, 0.6);
+  --text-color-1: rgb(0, 0, 0);
+  --text-color-2: rgb(58, 58, 58);
+  --text-color-3: rgba(49, 49, 49, 0.959);
+  --text-color-4: rgb(25, 23, 32);
+  --outline: rgb(62, 61, 64);
+
+  --shadow-1: 0px 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-2: 0px 3px 6px rgba(0, 0, 0, 0.4);
+
+
+  /* font-size */
+
+  --heading-text-1: 64px;
+  --heading-text-2: 32px;
+  --heading-text-3: 28px;
+  --heading-text-4: 48px;
+
+  --body-text-1: 16px; 
+  --body-text-2: 20px; 
+  --body-text-3: 24px; 
+  --body-text-4: 18px; 
+
+  --border-radius-1: 50px;
+  --border-radius-2: 10px;
+  --border-radius-3: 50%;
+  --border-radius-4: 28px;
+}
+
+ul{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: #ff3300;
+}
+
+html{
+  scroll-behavior: smooth;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+body{
+  background-color: var(--background-color-1);
+}
+
+sub {
+  vertical-align: baseline;
+}
+sup {
+  vertical-align: top;
+}
+
+svg{
+  color: var(--text-color-1);
+}
+
+.container{
+  width: 100%;
+  padding: 16px 32px;
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
+  gap: 32px;
+}
+
+
+.card{
+  flex: 1;
+  background-color: var(--background-color-3);
+  border-radius: var(--border-radius-4);
+  padding: 24px;
+  color: var(--text-color-2);
+  cursor: pointer;
+}
+
+
+.title-1{
+  color: var(--text-color-3);
+  font-size: var(--body-text-1);
+}
+
+.title-2{
+  margin-block: 16px;
+  color: var(--text-color-2);
+  font-size: var(--body-text-3);
+}
+
+.body-text-1{
+  color: var(--text-color-3);
+  font-size: var(--body-text-1);
+}
+
+.body-text-2{
+  color: var(--text-color-2);
+  font-size: var(--body-text-4);
+}
+
+.body-text-3{
+  color: var(--text-color-1);
+  font-size: var(--body-text-3);
+}
+
+@media screen and (max-width: 1200px) {
+  .container{
+    grid-template-columns: 280px minmax(0, 1fr);
+  }  
+}
+
+@media screen and (max-width: 760px) {
+  .container{
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container{
+    padding: 16px;
+  }
+}

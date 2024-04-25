@@ -1,0 +1,33 @@
+.slider-container{
+    overflow-x: scroll; 
+}
+
+.slider-container::-webkit-scrollbar {
+    display: none;
+  }
+.slider-container{
+    -ms-overflow-style: none; 
+    scrollbar-width: none;  
+    width: 100%;
+}
+
+.slider-list{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+.slider-item{
+    text-align: center;
+    min-width: 150px;
+}
+
+.slider-item > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 16px;
+}

@@ -1,0 +1,13 @@
+.search-result-container-blur{
+    opacity: 0;
+}
+
+.search-result-item-active{
+    background-color: var(--background-color-2);
+}
+
+@media screen and (max-width:1250px) {
+    .search-result-container-blur{
+        visibility: 1;
+    }
+}

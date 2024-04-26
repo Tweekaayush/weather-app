@@ -4,7 +4,8 @@
 
 .slider-container::-webkit-scrollbar {
     display: none;
-  }
+}
+
 .slider-container{
     -ms-overflow-style: none; 
     scrollbar-width: none;  
@@ -30,4 +31,11 @@
     align-items: center;
     gap: 16px;
     padding: 24px 16px;
+}
+
+
+@media screen and (max-width:570px) {
+    .slider-item{
+        min-width: 125px;
+    }
 }

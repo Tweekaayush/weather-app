@@ -5,15 +5,22 @@
 
 .current-weather-container{
     display: flex;
-    justify-content: space-between;
     align-items: center;
     margin-block: 16px;
 }
 
 .heading{
-    font-size: var(--heading-text-1);
+    font-size: var(--heading-text-4);
     color: var(--text-color-1);
     line-height: 1.1;
+    flex: 1;
+}
+
+.current-weather-container div{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .weather-icon{
@@ -45,7 +52,7 @@
     font-size: var(--body-text-2);
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1250px) {
     .heading{
         font-size: var(--heading-text-4);
     }
@@ -57,5 +64,25 @@
     .weather-icon-2{
         height: 40px;
         width: 40px;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .heading{
+        font-size: var(--heading-text-1) ;
+    }
+    .weather-icon{
+        height: 64px;
+        width: 64px;
+    }
+}
+
+@media screen and (max-width:570px) {
+    .heading{
+        font-size: var(--heading-text-4) ;
+    }
+    .weather-icon{
+        height: 50px;
+        width: 50px;
     }
 }

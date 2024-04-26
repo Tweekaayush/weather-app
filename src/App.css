@@ -11,7 +11,7 @@
 
 :root{
   /* colors */
-  --primary-color: rgb(0, 255, 255);
+  --primary-color:  rgb(177, 178, 255);
   --background-color-1: rgb(19, 18, 20);
   --background-color-2:  rgba(255, 255, 255, 0.08);
   --background-color-3: rgb(29, 28, 31);
@@ -20,10 +20,21 @@
   --text-color-2: rgb(221, 218, 229);
   --text-color-3: rgb(123, 121, 128);
   --text-color-4: rgb(25, 23, 32);
+  --text-color-5: rgb(25, 23, 32);
   --outline: rgb(62, 61, 64);
 
   --shadow-1: 0px 1px 3px rgba(0, 0, 0, 0.5);
   --shadow-2: 0px 3px 6px rgba(0, 0, 0, 0.4);
+
+  --aqi-1: #75ff20;
+  --aqi-2: #daff20;
+  --aqi-3: #ffff20;
+  --aqi-4: #ffc517;
+  --aqi-5: #ff3737;
+
+  /* background image */
+
+  --url: url("https://www.transparenttextures.com/patterns/diagmonds.png");
 
   /* font-size */
 
@@ -31,6 +42,7 @@
   --heading-text-2: 32px;
   --heading-text-3: 28px;
   --heading-text-4: 48px;
+  --heading-text-5: 24px;
 
   --body-text-1: 16px; 
   --body-text-2: 20px; 
@@ -45,20 +57,30 @@
 
 .light-theme{
   /* colors */
-  --primary-color: rgb(0, 255, 255);
-  --background-color-1: rgb(0, 207, 207);
-  --background-color-2:  rgb(0, 255, 255, 0.08);
-  --background-color-3: rgba(45, 255, 255, 0.5);
-  --background-color-4: rgba(5, 207, 207, 0.6);
+  --primary-color: rgb(195, 196, 255);
+  --background-color-1: rgb(255, 255, 255);
+  --background-color-2:  rgba(170, 196, 255, 0.397);
+  --background-color-3: rgb(210, 218, 255);
+  --background-color-4: rgba(170, 196, 255, 0.2);
   --text-color-1: rgb(0, 0, 0);
   --text-color-2: rgb(58, 58, 58);
   --text-color-3: rgba(49, 49, 49, 0.959);
   --text-color-4: rgb(25, 23, 32);
+  --text-color-5: rgb(255, 255, 255);
   --outline: rgb(62, 61, 64);
 
-  --shadow-1: 0px 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-1: 0px 1px 3px rgba(0, 0, 0, 0.329);
   --shadow-2: 0px 3px 6px rgba(0, 0, 0, 0.4);
 
+  --aqi-1: #75ff20;
+  --aqi-2: #daff20;
+  --aqi-3: #ffff20;
+  --aqi-4: #ffc517;
+  --aqi-5: #ff3737;
+
+  /* background image */
+
+    --url: url("https://www.transparenttextures.com/patterns/diagmonds-light.png");
 
   /* font-size */
 
@@ -66,6 +88,7 @@
   --heading-text-2: 32px;
   --heading-text-3: 28px;
   --heading-text-4: 48px;
+  --heading-text-5: 24px;
 
   --body-text-1: 16px; 
   --body-text-2: 20px; 
@@ -94,6 +117,7 @@ html{
 
 body{
   background-color: var(--background-color-1);
+  background-image: var(--url);
 }
 
 sub {
@@ -123,6 +147,7 @@ svg{
   padding: 24px;
   color: var(--text-color-2);
   cursor: pointer;
+  box-shadow: var(--shadow-1);
 }
 
 
@@ -152,20 +177,23 @@ svg{
   font-size: var(--body-text-3);
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1250px) {
   .container{
     grid-template-columns: 280px minmax(0, 1fr);
   }  
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 800px) {
   .container{
     grid-template-columns: minmax(0, 1fr);
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 570px) {
   .container{
     padding: 16px;
+  }
+  .body-text-3{
+    font-size: var(--body-text-2); 
   }
 }

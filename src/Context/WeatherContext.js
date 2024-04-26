@@ -61,7 +61,7 @@ export const WeatherContextProvider = ({children}) => {
           name: name,
           country: country
         })
-      })
+      }).catch(e=>console.log(e))
 
     }
 
@@ -78,7 +78,7 @@ export const WeatherContextProvider = ({children}) => {
               sunset: getTime(res.data.sys.sunset, res.data.timezone)
 
             })
-        })
+        }).catch(e=>console.log(e))
     }
 
     const getDaysForecast = (array) =>{
@@ -104,8 +104,9 @@ export const WeatherContextProvider = ({children}) => {
             setLoading(false)
             getDaysForecast(res.data.list)
             getHourlyForecast(res.data.list)
-        })
+        }).catch(e=>console.log(e))
       }
+
       const getPollutionDetails = async() =>{
         setLoading(true)
     
@@ -113,7 +114,7 @@ export const WeatherContextProvider = ({children}) => {
         .then((res)=>{
             setLoading(false)
             setPollutionDetails(res.data?.list)
-        })
+        }).catch(e=>console.log(e))
       }
 
 

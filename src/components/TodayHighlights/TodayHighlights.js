@@ -59,10 +59,10 @@ const TodayHighlights = () => {
                                         </span>
                                     </div>
                                     <div className="wrapper">
+                                        <div>
+                                            <FontAwesomeIcon icon={faWind}/>
+                                        </div>
                                         <ul className="card-list">
-                                            <li className="card-item">
-                                                <FontAwesomeIcon icon={faWind}/>
-                                            </li>
                                             <li className="card-item">
                                                 <p className="title-1">
                                                     PM<sub>2.5</sub>

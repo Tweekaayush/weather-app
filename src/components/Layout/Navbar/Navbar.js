@@ -36,7 +36,7 @@ const Navbar = () => {
     <nav className='navbar'>
         <div className="nav-brand">
           <FontAwesomeIcon icon={faCloud}/>
-          <a href="" className="nav-brand">Weatherly</a>
+          <a href="">Weatherly</a>
         </div>
         <SearchBox open={open} setOpen={setOpen}/>
         <div className="nav-items">

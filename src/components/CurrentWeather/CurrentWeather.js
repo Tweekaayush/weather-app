@@ -23,7 +23,9 @@ const CurrentWeather = () => {
                             &deg;
                             <sup>c</sup>
                         </p>
-                        <img src={`images/${curWeatherIcon}.png`} className='weather-icon' alt={curWeatherDescription}/>
+                        <div>
+                            <img src={`images/${curWeatherIcon}.png`} className='weather-icon' alt={curWeatherDescription}/>
+                        </div>
                     </div>
                     <p>
                         {curWeatherDescription}

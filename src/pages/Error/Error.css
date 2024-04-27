@@ -1,0 +1,26 @@
+.error-container{
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 32px;
+    gap: 16px;
+}
+
+.error-container span{
+    background-color: var(--background-color-2);
+    padding: 8px 16px;
+    border-radius: var(--border-radius-4);
+    color: var(--text-color-2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+@media screen and (max-width:570px) {
+    .error-container{
+        padding: 16px;
+    }
+}

@@ -22,6 +22,7 @@
   --text-color-4: rgb(25, 23, 32);
   --text-color-5: rgb(25, 23, 32);
   --outline: rgb(62, 61, 64);
+  --outline-2: rgb(94, 94, 94);
 
   --shadow-1: 0px 1px 3px rgba(0, 0, 0, 0.5);
   --shadow-2: 0px 3px 6px rgba(0, 0, 0, 0.4);
@@ -34,7 +35,7 @@
 
   /* background image */
 
-  --url: url("https://www.transparenttextures.com/patterns/diagmonds.png");
+  --url: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");
 
   /* font-size */
 
@@ -60,14 +61,15 @@
   --primary-color: rgb(195, 196, 255);
   --background-color-1: rgb(255, 255, 255);
   --background-color-2:  rgba(170, 196, 255, 0.397);
-  --background-color-3: rgb(210, 218, 255);
-  --background-color-4: rgba(170, 196, 255, 0.2);
+  --background-color-3: rgb(197, 208, 255);
+  --background-color-4: rgba(136, 172, 255, 0.2);
   --text-color-1: rgb(0, 0, 0);
   --text-color-2: rgb(58, 58, 58);
   --text-color-3: rgba(49, 49, 49, 0.959);
   --text-color-4: rgb(25, 23, 32);
   --text-color-5: rgb(255, 255, 255);
   --outline: rgb(62, 61, 64);
+  --outline-2: rgb(228, 228, 228);
 
   --shadow-1: 0px 1px 3px rgba(0, 0, 0, 0.329);
   --shadow-2: 0px 3px 6px rgba(0, 0, 0, 0.4);
@@ -77,10 +79,6 @@
   --aqi-3: #ffff20;
   --aqi-4: #ffc517;
   --aqi-5: #ff3737;
-
-  /* background image */
-
-    --url: url("https://www.transparenttextures.com/patterns/diagmonds-light.png");
 
   /* font-size */
 
@@ -162,6 +160,12 @@ svg{
   font-size: var(--body-text-3);
 }
 
+.title-3{
+  color: var(--text-color-3);
+  font-size: var(--heading-text-2); 
+  text-align: center;
+}
+
 .body-text-1{
   color: var(--text-color-3);
   font-size: var(--body-text-1);
@@ -181,6 +185,9 @@ svg{
   .container{
     grid-template-columns: 280px minmax(0, 1fr);
   }  
+  .title-3{
+    font-size: var(--heading-text-3); 
+  }  
 }
 
 @media screen and (max-width: 800px) {
@@ -196,4 +203,7 @@ svg{
   .body-text-3{
     font-size: var(--body-text-2); 
   }
+  .title-3{
+    font-size: var(--heading-text-5); 
+  }  
 }

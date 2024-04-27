@@ -2,16 +2,33 @@ import React, { useContext } from 'react'
 import './HourlyForecast.css'
 import { WeatherContext } from '../../Context/WeatherContext'
 import { getTime, mps_to_kmh } from '../../module'
+import Loader from '../Loader/Loader'
 
 const HourlyForecast = () => {
 
   const {loading, hourlyForecast, timezone} = useContext(WeatherContext)
+  const loaderArr = [1 , 2, 3 ,4 ,5 ,6, 7 ,8]
 
   return (
 
     <>
         {loading?(
-            <></>
+            <div className="slider-container">
+                <div className="slider-list">
+                    {loaderArr.map((item, i)=>{
+                        return  (<li key={i} className="slider-item">
+                                    <Loader loader='loader-4'/>
+                                </li>)
+                    })}
+                </div>
+                <div className="slider-list">
+                    {loaderArr.map((item, i)=>{
+                        return  (<li key={i} className="slider-item">
+                                    <Loader loader='loader-4'/>
+                                </li>)
+                    })}
+                </div>
+            </div>
         ):(
             <section>
                 <h2 className='title-2'>Today at</h2>

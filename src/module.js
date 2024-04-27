@@ -57,7 +57,7 @@ export const getFullDate = (dt, tz) =>{
     const date = d.getDate(dt, tz)
     let month = calcMonth(d.getMonth(dt, tz))
 
-    return `${day} ${date}, ${month}`
+    return `${day} ${date < 10 ?'0':''}${date}, ${month}`
 
 }
 
@@ -74,7 +74,7 @@ export const getTime = (time, tz) =>{
     const hours = date.getUTCHours();
     const minutes = date.getUTCMinutes();
     const period = hours >= 12 ? "PM" : "AM";
-    return `${hours % 12 || 12}:${minutes} ${period}`;
+    return `${hours % 12 || 12}:${minutes < 10 ?'0':''}${minutes} ${period}`;
 }
 
 export const mps_to_kmh= (mps) =>{

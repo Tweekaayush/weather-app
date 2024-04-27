@@ -5,6 +5,7 @@ import { faWind } from '@fortawesome/free-solid-svg-icons'
 import { WeatherContext } from '../../Context/WeatherContext'
 import { faSun, faMoon, faEye } from '@fortawesome/free-regular-svg-icons'
 import { faTemperatureLow, faDroplet, faWater } from '@fortawesome/free-solid-svg-icons'
+import Loader from '../Loader/Loader'
 
 const TodayHighlights = () => {
   
@@ -44,8 +45,7 @@ const TodayHighlights = () => {
     <>
         {
             loading?(
-                <>
-                </>
+                <Loader loader='loader-3'/>
             ):(
                 <section>
                         <div className="card">

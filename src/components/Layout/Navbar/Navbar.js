@@ -5,14 +5,17 @@ import { faSun, faMoon, faLocationCrosshairs, faMagnifyingGlass, faCloud} from '
 import SearchBox from '../../SearchBox/SearchBox'
 import { ThemeContext } from '../../../Context/ThemeContext'
 import { WeatherContext } from '../../../Context/WeatherContext'
+import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
     
   const {theme, changeTheme} = useContext(ThemeContext)
 
-  const {getLocation} = useContext(WeatherContext)
+  const {getLocation, setLocation} = useContext(WeatherContext)
 
   const [open, setOpen] = useState(false)
+
+  const navigate = useNavigate()
 
   const handleTheme = () =>{
     changeTheme()
@@ -23,6 +26,16 @@ const Navbar = () => {
         setOpen(false)
   }
 
+  const handleRedirect = () =>{
+
+    setLocation({
+      lat: 28.6139,
+      lon: 77.2088
+    })
+
+    navigate('/')
+
+  }
   
   useEffect(()=>{
     window.addEventListener("resize", handleResize)
@@ -36,7 +49,7 @@ const Navbar = () => {
     <nav className='navbar'>
         <div className="nav-brand">
           <FontAwesomeIcon icon={faCloud}/>
-          <a href="">Weatherly</a>
+          <span onClick={handleRedirect}>Weatherly</span>
         </div>
         <SearchBox open={open} setOpen={setOpen}/>
         <div className="nav-items">

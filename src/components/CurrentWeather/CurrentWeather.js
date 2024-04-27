@@ -3,6 +3,7 @@ import './CurrentWeather.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendar, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { WeatherContext } from '../../Context/WeatherContext'
+import Loader from '../Loader/Loader'
 
 const CurrentWeather = () => {
 
@@ -12,7 +13,7 @@ const CurrentWeather = () => {
     <>
     {   
         loading?(
-            <></>   
+            <Loader loader='loader-1'/>   
         ):(
             <section className='current-weather'>
                 <div className="card">

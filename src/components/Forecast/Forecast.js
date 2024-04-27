@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import './Forecast.css'
 import { getDayName, getMonthName } from '../../module'
 import { WeatherContext } from '../../Context/WeatherContext'
+import Loader from '../Loader/Loader'
 
 const Forecast = () => {
 
@@ -11,8 +12,7 @@ const Forecast = () => {
     <>
         {
             loading?(   
-                <>
-                </>
+                <Loader loader='loader-2'/>
             ):(
             <section>
                 <h2 className='title-2'>5 Days Forecast</h2>
@@ -22,7 +22,7 @@ const Forecast = () => {
                             dayForecast.map((item, i)=>{
                                 const d = new Date(item.dt_txt)
                                 let day = getDayName(d.getDay())
-                                let date = `${d.getDate()} ${getMonthName(d.getMonth())}`
+                                let date = `${d.getDate() < 10 ?'0':''}${d.getDate()} ${getMonthName(d.getMonth())}`
                                 return (
                                     <li key={i} className="forecast-list-item">
                                         <div className="weather-details-wrap">

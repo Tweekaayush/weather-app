@@ -19,7 +19,7 @@
     transition: all 0.3s;
 }
 
-.nav-brand a, .nav-brand svg{
+.nav-brand span, .nav-brand svg{
     color: var(--text-color-1);
     font-size: var(--heading-text-2);
     font-weight: 700;
@@ -254,7 +254,7 @@
         padding: 32px 16px;
     }
 
-    .nav-brand a, .nav-brand svg{
+    .nav-brand span, .nav-brand svg{
         font-size: var(--heading-text-5);
     }
 

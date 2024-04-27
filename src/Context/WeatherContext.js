@@ -2,10 +2,13 @@ import React, { createContext, useEffect, useState } from 'react'
 import { getCurrentWeather, getAirPollutionDetails, getForecast, reverseGeo } from '../config/api'
 import axios from 'axios'
 import { getFullDate, getTime } from '../module'
+import { useNavigate } from 'react-router-dom'
 
 export const WeatherContext = createContext()
 
 export const WeatherContextProvider = ({children}) => {
+
+    const navigate = useNavigate()
 
     const [place, setPlace] = useState({
       name: '',
@@ -13,8 +16,8 @@ export const WeatherContextProvider = ({children}) => {
     })
   
     const [location, setLocation] = useState({
-        lat: 28.7041,
-        lon: 77.1025
+        lat: 28.6139,
+        lon: 77.2088
     })
 
     const [time, setTime] = useState({
@@ -24,9 +27,17 @@ export const WeatherContextProvider = ({children}) => {
 
     const [currentWeatherData, setCurrentWeatherData] = useState({})
 
-    const [curWeatherArray, setCurWeatherArray] = useState([]) 
+    const [curWeatherArray, setCurWeatherArray] = useState([])
 
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState({
+      loading: true,
+      locationLoading: false,
+      nameAndCountryLoading: false,
+      currentWeatherLoading: false, 
+      forecastLoading: false,
+      hourlyForecastLoading: false,
+      pollutionLoading: false
+    })
 
     const [fullDate, setFullDate] = useState('')
 
@@ -37,7 +48,7 @@ export const WeatherContextProvider = ({children}) => {
     const [hourlyForecast, setHourlyForecast] = useState([])
 
     const getLocation = async() =>{ 
-
+        setLoading({...loading, locationLoading: true})
         await axios.get('https://api.ipify.org/?format=json')
         .then(async(res)=>{
           await axios.get(`https://ipinfo.io/${res.data?.ip}?token=c177813f87d9fa`)
@@ -45,15 +56,18 @@ export const WeatherContextProvider = ({children}) => {
             const [latitude, longitude] = resp.data.loc.split(',')
             setLocation({
               lat: latitude,
-              lon: longitude,
-              visited: true
+              lon: longitude
             })
+            setLoading({...loading, locationLoading: false})
             })
-          }).catch(e=>console.log(e))
+          }).catch((e)=>{
+            navigate('/notfound')
+          })
+          setAllLoading()
     }
 
     const getNameAndCountry = async() =>{
-      setLoading(true)
+      setLoading({...loading, nameAndCountryLoading: true})
       await axios.get(reverseGeo(location.lat, location.lon))
       .then((res)=>{
         const [{name, country}] = res.data
@@ -61,15 +75,19 @@ export const WeatherContextProvider = ({children}) => {
           name: name,
           country: country
         })
-      }).catch(e=>console.log(e))
+        setLoading({...loading, nameAndCountryLoading: false})
+      }).catch((e)=>{
+        navigate('/notfound')
+      })
+      setAllLoading()
 
     }
 
     const currentWeather = async() =>{
-        setLoading(true)
+        setLoading({...loading, currentWeatherLoading: true})
         await axios.get(getCurrentWeather(location.lat, location.lon))
         .then((res)=>{
-            setLoading(false)
+            setLoading({...loading, currentWeatherLoading: false})
             setCurrentWeatherData(res.data)
             setFullDate(getFullDate(res.data.dt, res.data.timezone))
             setCurWeatherArray(res.data.weather[0])
@@ -78,7 +96,10 @@ export const WeatherContextProvider = ({children}) => {
               sunset: getTime(res.data.sys.sunset, res.data.timezone)
 
             })
-        }).catch(e=>console.log(e))
+        }).catch((e)=>{
+          navigate('/notfound')
+        })
+        setAllLoading()
     }
 
     const getDaysForecast = (array) =>{
@@ -98,26 +119,37 @@ export const WeatherContextProvider = ({children}) => {
     }
 
     const forecast = async() =>{
-        setLoading(true)
+        setLoading({...loading, forecastLoading: true})
         await axios.get(getForecast(location.lat, location.lon))
         .then((res)=>{
-            setLoading(false)
+            setLoading({...loading, forecastLoading: false})
             getDaysForecast(res.data.list)
             getHourlyForecast(res.data.list)
-        }).catch(e=>console.log(e))
+        }).catch((e)=>{
+          navigate('/notfound')
+        })
+        setAllLoading()
       }
 
       const getPollutionDetails = async() =>{
-        setLoading(true)
+        setLoading({...loading, pollutionLoading: true})
     
         await axios.get(getAirPollutionDetails(location.lat, location.lon))
         .then((res)=>{
-            setLoading(false)
+            setLoading({...loading, pollutionLoading: false})
             setPollutionDetails(res.data?.list)
-        }).catch(e=>console.log(e))
+        }).catch((e)=>{
+          navigate('/notfound')
+        })
+        setAllLoading()
       }
 
-
+      const setAllLoading = () =>{
+          setLoading({
+            ...loading, 
+            loading: loading.locationLoading & loading.nameAndCountryLoading & loading.currentWeatherLoading & loading.forecastLoading & loading.hourlyForecastLoading & loading.pollutionLoading
+          })
+      }
       
   useEffect(()=>{
 
@@ -142,7 +174,7 @@ export const WeatherContextProvider = ({children}) => {
     feelsLike: currentWeatherData?.main?.feels_like,
     pressure: currentWeatherData?.main?.pressure,
     visibility: currentWeatherData?.visibility,
-    loading,
+    loading: loading.loading,
     dayForecast: dayForecast,
     pollutionDetails: pollutionDetails[0],
     aqi: pollutionDetails[0]?.main?.aqi,

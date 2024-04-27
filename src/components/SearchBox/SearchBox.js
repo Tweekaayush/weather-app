@@ -5,10 +5,12 @@ import { faLocationDot, faMagnifyingGlass, faArrowLeft } from '@fortawesome/free
 import {geo} from '../../config/api'
 import axios from 'axios'
 import { WeatherContext } from '../../Context/WeatherContext'
+import { useNavigate } from 'react-router-dom'
 
 const SearchResultItem = (props) =>{
 
     const {setLocation} = useContext(WeatherContext)
+    const navigate = useNavigate()
 
     const handleLocation = (lat, lon) =>{
 
@@ -20,6 +22,7 @@ const SearchResultItem = (props) =>{
         props.setSearch('')
         props.setArray([])
         props.handleOpen()
+        navigate('/')
       }
     
     const handleMouseOver = () =>{
@@ -56,6 +59,8 @@ const SearchBox = (props) => {
 
   const {setLocation} = useContext(WeatherContext)
 
+  const navigate = useNavigate()
+
   const handleLocation = (lat, lon) =>{
 
       setLocation({
@@ -66,6 +71,7 @@ const SearchBox = (props) => {
       setSearch('')
       setArray([])
       handleOpen()
+      navigate('/')
   }
   
 

@@ -89,6 +89,8 @@ const SearchBox = (props) => {
         .then((res)=>{
             setArray(res.data)
             setCurIdx(0)
+        }).catch((e)=>{
+            console.log(e)
         })
     }
   }
@@ -137,7 +139,7 @@ const SearchBox = (props) => {
         <ul className={`search-result-container ${cls}`} data-search-result>
             {
                 array.map((item, i)=>{
-                    return <SearchResultItem id={i} key={item.id} title={item.name} subTitle={item.country} lat={item.lat} lon={item.lon} setSearch ={setSearch} setArray={setArray} handleOpen={handleOpen} setCurIdx={setCurIdx} curIdx={curIdx}/>
+                    return <SearchResultItem id={i} key={i} title={item.name} subTitle={item.country} lat={item.lat} lon={item.lon} setSearch ={setSearch} setArray={setArray} handleOpen={handleOpen} setCurIdx={setCurIdx} curIdx={curIdx}/>
                 })
             }
         </ul>

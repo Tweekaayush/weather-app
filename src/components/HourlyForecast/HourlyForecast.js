@@ -48,7 +48,7 @@ const HourlyForecast = () => {
                                             <p className="body-text-2">
                                                 {getTime(dt, timezone)}
                                             </p>
-                                            <img src={`images/${icon}.png`} alt={description} className='weather-icon' />
+                                            <img src={require(`../../assets/images/weather_icons/${icon}.png`)} alt={description} className='weather-icon' />
                                             <p className="body-text-2">
                                                 {temp}&deg;
                                             </p>
@@ -73,7 +73,7 @@ const HourlyForecast = () => {
                                             <p className="body-text-2">
                                                 {getTime(dt, timezone)}
                                             </p>
-                                            <img src={`images/direction.png`} alt={description} style={{transform : `rotate(${windDirection - 180}deg`}} className='weather-icon'/>
+                                            <img src={require(`../../assets/images/weather_icons/direction.png`)} alt={description} style={{transform : `rotate(${windDirection - 180}deg`}} className='weather-icon'/>
                                             <p className="body-text-2">
                                                 {mps_to_kmh(windSpeed).toPrecision(3)}
                                                 Km/h

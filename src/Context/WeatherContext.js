@@ -61,6 +61,7 @@ export const WeatherContextProvider = ({children}) => {
             setLoading({...loading, locationLoading: false})
             })
           }).catch((e)=>{
+            console.log(e)
             navigate('/notfound')
           })
           setAllLoading()
@@ -77,6 +78,7 @@ export const WeatherContextProvider = ({children}) => {
         })
         setLoading({...loading, nameAndCountryLoading: false})
       }).catch((e)=>{
+        console.log(e)
         navigate('/notfound')
       })
       setAllLoading()
@@ -97,6 +99,7 @@ export const WeatherContextProvider = ({children}) => {
 
             })
         }).catch((e)=>{
+          console.log(e)
           navigate('/notfound')
         })
         setAllLoading()
@@ -126,6 +129,7 @@ export const WeatherContextProvider = ({children}) => {
             getDaysForecast(res.data.list)
             getHourlyForecast(res.data.list)
         }).catch((e)=>{
+          console.log(e)
           navigate('/notfound')
         })
         setAllLoading()
@@ -139,6 +143,7 @@ export const WeatherContextProvider = ({children}) => {
             setLoading({...loading, pollutionLoading: false})
             setPollutionDetails(res.data?.list)
         }).catch((e)=>{
+          console.log(e)
           navigate('/notfound')
         })
         setAllLoading()

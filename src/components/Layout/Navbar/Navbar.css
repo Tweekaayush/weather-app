@@ -57,6 +57,10 @@
     transition: all 0.3s;
 }
 
+.search-wrapper input::placeholder{
+    color: var(--text-color-2);
+}
+
 .search-wrapper input:hover, .search-wrapper input:focus{
     box-shadow: var(--shadow-2);
 } 
@@ -172,13 +176,13 @@
 
 .current-location p{
     font-size: var(--body-text-1);
-    color: var(--text-color-4);
+    color: var(--text-color-5);
     font-weight: 500;
 }
 
 .current-location svg{
     font-size: var(--body-text-2);
-    color: var(--text-color-4);
+    color: var(--text-color-5);
 }
 
 .nav-search-active{

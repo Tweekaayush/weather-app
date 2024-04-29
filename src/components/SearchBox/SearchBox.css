@@ -1,5 +1,5 @@
 .search-result-container-blur{
-    opacity: 0;
+    display: none;
 }
 
 .search-result-item-active{
@@ -8,6 +8,6 @@
 
 @media screen and (max-width:1250px) {
     .search-result-container-blur{
-        visibility: 1;
+        display: block;
     }
 }

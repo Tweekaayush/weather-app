@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useRef, useEffect } from 'react'
 import './SearchBox.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faMagnifyingGlass, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
@@ -28,10 +28,18 @@ const SearchResultItem = (props) =>{
     const handleMouseOver = () =>{
         props.setCurIdx(props.id)
     }
+
+    const handleClick = () =>{
+        handleLocation(props.lat, props.lon)
+    }
       
 
     return(
-        <li className={props.id === props.curIdx?`search-result-item search-result-item-active`:`search-result-item`} onClick={() => handleLocation(props.lat, props.lon)} onMouseOver={handleMouseOver}> 
+        <li 
+        className={props.id === props.curIdx?`search-result-item search-result-item-active`:`search-result-item`} 
+        onClick={handleClick} 
+        onMouseOver={handleMouseOver}
+        > 
             <span className='location-icon'>
                 <FontAwesomeIcon icon={faLocationDot}/>
             </span>
@@ -60,6 +68,8 @@ const SearchBox = (props) => {
   const {setLocation} = useContext(WeatherContext)
 
   const navigate = useNavigate()
+
+  const ref = useRef(null)
 
   const handleLocation = (lat, lon) =>{
 
@@ -99,10 +109,6 @@ const SearchBox = (props) => {
     props.setOpen(false)
   }
 
-  const handleBlur = () =>{
-    setCls('search-result-container-blur')
-  }
-
   const handleFocus = () =>{
     setCls('')
   }
@@ -125,8 +131,24 @@ const SearchBox = (props) => {
     }
   }
 
+  const handleClickOutside = (event) => {
+    if (ref.current && !ref.current.contains(event.target)) {
+        setCls('search-result-container-blur')
+    }
+}
+
+  useEffect(()=>{
+
+
+
+    document.addEventListener('click', handleClickOutside, true);
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true);
+    };
+  }, [])
+
   return (
-    <div className={props.open?"nav-search nav-search-active":'nav-search'} onBlur={handleBlur} onFocus={handleFocus}>
+    <div className={props.open?"nav-search nav-search-active":'nav-search'} onFocus={handleFocus} ref={ref}>
         <div className="search-wrapper">
             <input type="search" name="search" value={search} placeholder='search city...' onChange={handleChange} autoComplete='off' onKeyDown={handleKeyDown}/>
             <span className='search-box-icon'>
@@ -136,10 +158,22 @@ const SearchBox = (props) => {
                 <FontAwesomeIcon icon={faArrowLeft} />
             </span>
         </div>
-        <ul className={`search-result-container ${cls}`} data-search-result>
+        <ul className={`search-result-container ${cls}`}>
             {
                 array.map((item, i)=>{
-                    return <SearchResultItem id={i} key={i} title={item.name} subTitle={item.country} lat={item.lat} lon={item.lon} setSearch ={setSearch} setArray={setArray} handleOpen={handleOpen} setCurIdx={setCurIdx} curIdx={curIdx}/>
+                    return <SearchResultItem 
+                        id={i} 
+                        key={i} 
+                        title={item.name} 
+                        subTitle={item.country} 
+                        lat={item.lat} 
+                        lon={item.lon} 
+                        setSearch ={setSearch} 
+                        setArray={setArray} 
+                        handleOpen={handleOpen} 
+                        setCurIdx={setCurIdx} 
+                        curIdx={curIdx}
+                    />
                 })
             }
         </ul>

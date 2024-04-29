@@ -26,7 +26,7 @@ const Forecast = () => {
                                 return (
                                     <li key={i} className="forecast-list-item">
                                         <div className="weather-details-wrap">
-                                            <img src={require(`../../assets/images/weather_icons/${item?.weather[0].icon}.png`)} alt={item?.weather[0].description} className='weather-icon-2' />
+                                            <img src={`./assets/images/weather_icons/${item?.weather[0].icon}.png`} alt={item?.weather[0].description} className='weather-icon-2' />
                                             <p>
                                                 {item.main.temp}
                                                 &deg;

@@ -25,7 +25,7 @@ const CurrentWeather = () => {
                             <sup>c</sup>
                         </p>
                         <div>
-                            <img src={require(`../../assets/images/weather_icons/${curWeatherIcon}.png`)} className='weather-icon' alt={curWeatherDescription}/>
+                            <img src={`./assets/images/weather_icons/${curWeatherIcon}.png`} className='weather-icon' alt={curWeatherDescription}/>
                         </div>
                     </div>
                     <p>

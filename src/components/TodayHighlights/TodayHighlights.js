@@ -39,7 +39,7 @@ const TodayHighlights = () => {
 
     setAQI()
 
-  }, [loading])
+  }, [aqi])
 
   return (
     <>
